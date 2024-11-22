@@ -51,13 +51,23 @@ app.post("/login", (request, response) => {
 
 // GET /signup - Render signup form
 app.get("/signup", (request, response) => {
-    response.render("signup");
+    //retrieves error message passed through query, null if no error occurs
+    const errorMessage = request.query.error || null;
+    return response.render("signup", { errorMessage});
 });
 
 // POST /signup - Allows a user to signup
 app.post("/signup", (request, response) => {
-    
+    const {email, username, password} = request.body;
+    //checking if email or username already exists, sending error message if so
+    if (USERS.find((user) => user.email === email || user.username === username)) {
+        return response.status(400).render('signup', {errorMessage: "username or email already exists."});
+}
+    //adds new user to USERS array, then redirecting to login page
+    USERS.push({email, username, password: bcrypt.hashSync(password, SALT_ROUNDS), role: 'user'});
+    return response.redirect('/login');
 });
+    
 
 // GET / - Render index page or redirect to landing if logged in
 app.get("/", (request, response) => {
