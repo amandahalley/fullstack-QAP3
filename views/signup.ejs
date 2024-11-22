@@ -1,5 +1,11 @@
 <%- include('partials/header', { title: "Sign Up" }) %>
     <h1>Sign Up</h1>
+
+    <!-- error message for if username or email is already taken -->
+    <% if (errorMessage) { %>
+        <%= errorMessage %>
+        <% } %>
+
     <form action="/signup" method="POST">
         <div class="form-input-container">
             <label for="email">Email:</label>
