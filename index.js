@@ -67,7 +67,7 @@ app.post("/signup", (request, response) => {
         return response.status(400).render('signup', {errorMessage: "Username already exists"})
     }
     //adds new user to USERS array, then redirecting to login page
-    USERS.push({email, username, password: bcrypt.hashSync(password, SALT_ROUNDS), role: 'user'});
+    USERS.push({id: USERS.length +1, email, username, password: bcrypt.hashSync(password, SALT_ROUNDS), role: 'user'});
     return response.redirect('/login');
 });
     
