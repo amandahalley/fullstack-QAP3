@@ -60,9 +60,12 @@ app.get("/signup", (request, response) => {
 app.post("/signup", (request, response) => {
     const {email, username, password} = request.body;
     //checking if email or username already exists, sending error message if so
-    if (USERS.find((user) => user.email === email || user.username === username)) {
-        return response.status(400).render('signup', {errorMessage: "username or email already exists."});
-}
+    if (USERS.find((user) => user.email === email)) {
+        return response.status(400).render('signup', {errorMessage: "Email already exists."});
+    }
+    if (USERS.find((user) => user.username === username)) {
+        return response.status(400).render('signup', {errorMessage: "Username already exists"})
+    }
     //adds new user to USERS array, then redirecting to login page
     USERS.push({email, username, password: bcrypt.hashSync(password, SALT_ROUNDS), role: 'user'});
     return response.redirect('/login');
