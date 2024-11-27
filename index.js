@@ -92,8 +92,26 @@ app.get("/", (request, response) => {
 
 // GET /landing - Shows a welcome page for users, shows the names of all users if an admin
 app.get("/landing", (request, response) => {
-    
+    //redirects to login page if user does not exist
+    if (!request.session.user) {
+        return response.redirect("/login");
+    }
+
+    //checks if role of user that logged in is "admin" or "user" ajd redire ccts to landing page according to role.
+    const {username, role} = request.session.user;
+    if (role === "admin") {
+        response.render("landing", {username, USERS, isAdmin: true});
+    } else {
+        response.render("landing", {username, USERS, isAdmin: false});
+    }
 });
+
+//added logout button to exit the session and redirect back to the home page
+app.post("/logout", (request, response) => {
+    request.session.destroy(() => {
+        response.redirect("/");
+    })
+})
 
 // Start server
 app.listen(PORT, () => {
