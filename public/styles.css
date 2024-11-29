@@ -1,88 +1,185 @@
 body {
-    background: linear-gradient(90deg, rgba(93,142,251,1) 0%, rgba(93,142,251,1) 50%, rgba(0,212,255,1) 100%);
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Lato', sans-serif;
-    display: flex;
-    color: #F6F6F6;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #f4f4f9, #e8eaf6);
+    color: #444;
+    line-height: 1.6;
 }
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
 
 .main-content {
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    align-items: center;
-    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.main-content .error-message {
-    color: yellow;
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 0px;
-}
 
-.main-content h1 {
-    font-size: 50px;
-}
-
-.main-content ul {
-    margin: 0px;
-}
-
-.main-content ul :not(:first-child) {
-    padding-top: 10px;
-}
-
-.main-content li {
-    font-size: 20px;
-}
-
-.main-content a:link {
-    color: #F6F6F6;
-}
-  
-.main-content a:visited {
-    text-decoration: none;
-}
-
-.main-content form {
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.main-content form .form-input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.main-content form label {
-    padding-right: 5px;
-}
-
-.main-content form input {
-    border-radius: 5px;
-    border: 0px;
-    font-size: 14px;
-    padding: 5px;
-}
-
-.main-content button {
+button {
+    background-color: #556cd6;
+    color: #fff;
     border: none;
-    background: #F6F6F6;
-    mix-blend-mode: screen;
-    padding: 6px;
-    border-radius: 5px;
-    margin-left: 5px;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.main-content .index-button-container button {
-    font-size: 25px;
+button:hover {
+    background-color: #3b50a5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #556cd6;
+    outline: none;
+}
+
+
+.form-input-container {
+    margin-bottom: 1.5rem;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+table th {
+    background-color: #556cd6;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+.index-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.index-button-container button {
+    width: 150px;
+}
+
+
+form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+p {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+}
+
+.error-message {
+    text-align: center;
+    color: #d32f2f;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 1rem auto;
     padding: 10px;
+    max-width: 500px;
+    background-color: rgba(211, 47, 47, 0.1);
+    border: 1px solid #d32f2f;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 768px) {
+    .index-button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table th, table td {
+        font-size: 0.9rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    button {
+        width: auto;
+        padding: 10px 20px;
+    }
 }
