@@ -3,7 +3,7 @@
 
     <!-- error message for if username or email is already taken -->
     <% if (errorMessage) { %>
-        <%= errorMessage %>
+        <p class="error-message"><%= errorMessage %></p>
         <% } %>
 
     <form action="/signup" method="POST">
